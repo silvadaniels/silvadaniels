@@ -112,15 +112,17 @@ library("car")
 # set data as panel
 	db_cerr <- pdata.frame(db_cerr, index=c("geocode","year"))
 
-# panel data analysis at municipal-level data in Cerrado biome####
+# panel data analysis at municipal-level data in Cerrado biome ####
+# Below the models for pooled, fixed, and random estimators in panel linear model
+# Quadractic terms are testing the non-linear effects on yield, e.g. squared temperature
 	ols <- plm(log_Y ~Temp_C +I(Temp_C^2) +Precip_mm +I(Precip_mm^2) +as.numeric(year), data=db_cerr, model= "pooling")
-	summary(ols)
+	summary(ols) # Results of the pooled panel model 'ols'
 	
 	fe <- plm(log_Y ~Temp_C +I(Temp_C^2) +Precip_mm +I(Precip_mm^2) +as.numeric(year), data=db_cerr, model= "within")
-	summary(fe)
+	summary(fe) # Results of the Fixed effects panel model 'fe'
 	
 	re <- plm(log_Y ~Temp_C +Precip_mm +as.numeric(year), data=db_cerr, model= "random")
-	summary(re)
+	summary(re) # Results of the Random Effects panel model 're'
 
 # Tests
 # Breusch-Pagan (Lagrange Multiplier) test for random effects versus OLS
@@ -136,9 +138,12 @@ library("car")
 						<!-- Four -->
 							<section id="four">
 								<div class="container">
-									<h3>Resume & Contact</h3>
-									<p>You can download my <a href="https://drive.google.com/file/d/1ADJmrf76eLgH3ZC0uhHqH7eOunvxuaNJ/view?usp=share_link">Resume here</a>.
+									<h3>CV & Contact</h3>
+									<p>See below my Resume, or <a href="https://drive.google.com/file/d/1qLxaVgNr-nfbltJ0tuSk7JcorfdGMapW/view?usp=share_link">download it here</a>.
+										<iframe src="images/CV_DanielSilva_jan2024.pdf" width="100%" height="600px"></iframe>
+										
 										<div class="features"></div>
+										<h4>Contact or follow me:</h4>
 										Email: <a href="danielsilva@utexas.edu">danielsilva@utexas.edu</a>
 										<div class="features"></div>
 										<a href="https://liberalarts.utexas.edu/geography/gradstudents/dss2927" class="icon alt fa-university"><span class="label">University of Texas</span> University of Texas</a><br/>
